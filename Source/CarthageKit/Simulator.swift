@@ -46,7 +46,7 @@ internal func selectAvailableSimulator(of sdk: SDK, from data: Data) -> Simulato
 	}
 	let platformName = sdk.platform.rawValue
 	let allTargetSimulators = devices
-		.filter { $0.key.hasPrefix(platformName) }
+		.filter { $0.key.hasPrefix("com.apple.CoreSimulator.SimRuntime." + platformName) }
 	func sortedByVersion(_ osNames: [String]) -> [String] {
 		return osNames.sorted { lhs, rhs in
 			guard let lhsVersion = Version.from(PinnedVersion(lhs)).value,
